@@ -5,17 +5,25 @@ abstract class Reisija {
     private String istekoht;
     // 1 = Esimene klass, 2 = Äriklass, 3 = Turistiklass
     private int reisiklass;
+    private int vahetusiJärel;
 
-    public Reisija(String nimi, String email, String passiNumber, int reisiklass, String istekoht) {
+    public Reisija(String nimi, String email, String passiNumber, int reisiklass, String istekoht, int vahetusiJärel) {
         this.nimi = nimi;
         this.email = email;
         this.passiNumber = passiNumber;
         this.reisiklass = reisiklass;
         this.istekoht = istekoht;
+        this.vahetusiJärel = vahetusiJärel;
     }
 
     public String getNimi() {
         return nimi;
+    }
+
+    public int getVahetusiJärel() { return vahetusiJärel; }
+
+    public void decrementVahetusiJärel() {
+        this.vahetusiJärel-- ;
     }
 
     public String getEmail() {
@@ -42,9 +50,13 @@ abstract class Reisija {
 
     @Override
     public String toString() {
-        return String.format(
-                "Reisija: %s (Email: %s, Passinumber: %s, Istekoht: %s, Reisiklass: %s)",
-                nimi, email, passiNumber, istekoht, reisiklass
-        );
+        String reisiklassiNimi = switch (reisiklass) {
+            case 1 -> "Esimese klass";
+            case 2 -> "Äriklass";
+            default -> "Turistiklass";
+        };
+
+        return "Reisija: " + nimi + " (Email: " + email + ", Passinumber: " + passiNumber +
+                ", Istekoht: " + istekoht + ", Reisiklass: " + reisiklassiNimi + ")";
     }
 }
