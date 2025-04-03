@@ -21,10 +21,32 @@ public class Peaklass {
         System.out.print("Sisesta lennunumber: ");
         String lennuNumber = scanner.nextLine();
 
-        System.out.print("Sisesta lennuki ridade arv (min 10, max 99): ");
-        int ridadeArv = scanner.nextInt();
-        System.out.print("Sisesta kohtade arv reas (min 2, max 8): ");
-        int kohtadeArv = scanner.nextInt();
+        int ridadeArv = 0;
+        boolean valiidneReaSisend = false;
+        while (!valiidneReaSisend) {
+            System.out.print("Sisesta lennuki ridade arv (min 10, max 99): ");
+            if (scanner.hasNextInt()) {
+                ridadeArv = scanner.nextInt();
+                valiidneReaSisend = true;
+            } else {
+                System.out.println("Palun sisesta arv vahemikus 10-99");
+                scanner.next();
+            }
+        }
+
+        int kohtadeArv = 0;
+        boolean valiidneKohaSisend = false;
+        while (!valiidneKohaSisend) {
+            System.out.print("Sisesta kohtade arv reas (min 2, max 8): ");
+            if (scanner.hasNextInt()) {
+                kohtadeArv = scanner.nextInt();
+                valiidneKohaSisend = true;
+            } else {
+                System.out.println("Palun sisesta arv vahemikus 10-99");
+                scanner.next();
+            }
+        }
+
         scanner.nextLine();
         IstumisJaotus istumisJaotus = new IstumisJaotus(ridadeArv, kohtadeArv);
         CheckInSysteem checkInSysteem = new CheckInSysteem(lennuNumber, istumisJaotus);

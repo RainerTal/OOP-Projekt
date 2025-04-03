@@ -108,7 +108,7 @@ public class CheckInSysteem {
             return;
         }
 
-        int rida = isteKohtArvud[1] + 1;
+        int rida = isteKohtArvud[1];
         int reisiklass = reisija.getReisiklass();
         boolean onLubatudRida = false;
 
@@ -271,7 +271,7 @@ public class CheckInSysteem {
                     continue;
                 }
 
-                int rida = isteKohtArvud[1] + 1;
+                int rida = isteKohtArvud[1];
                 boolean onLubatudRida = false;
 
                 if (reisiklass == 1 && rida >= 1 && rida <= 2) {
